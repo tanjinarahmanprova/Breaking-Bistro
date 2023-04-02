@@ -1,0 +1,37 @@
+.owl-carousel .item{
+ color: white;
+ font-size: 25px;
+ text-align: center;
+ margin-top: 20px;;
+}
+
+.owl-next{
+ float:right;
+}
+.owl-prev{
+ float:left;
+}
+.owl-prev span{
+ font-size: 24px;
+ font-weight: bold;
+}
+.owl-next span{
+ font-size: 24px;
+ font-weight: bold;
+}
+.body{
+    background-color: black;
+}
+.icon-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+  }
+.icon-container a {
+    margin-right: 20px;
+    margin-left: 20px;
+}
+.bg-black {
+    background-color: black;
+}

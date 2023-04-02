@@ -1,0 +1,34 @@
+{% extends 'app/base.html' %}
+{% load static %}
+{% block title %}Customer Registration{% endblock title %}
+{% block main-content %}
+<div class="container">
+ <div class="row my-3">
+  <div class="col-sm-6 offset-sm-3">
+   <h3 class="text-white">Signup</h3>
+   <hr>
+
+   <form action="" method="post" novalidate class="shadow p-5 text-white">
+      {% csrf_token %}
+         {% for fm in form %}
+            <div class="form-group mb-3">
+               {{fm.label_tag}} {{fm}} <small class="text-danger">{{fm.errors | striptags}}</small>
+            </div>
+         {% endfor %}
+         <div class="text-center">
+            <input type="submit" value="Submit" class="btn btn-warning">
+         </div><br>
+         <br>
+         <div class="text-center text-primary fw-bold text-white">
+            <small>Already have an account? <a href="{% url 'login' %}" class="text-white">Login</a></small>
+         </div>
+         {% if form.non_field_errors %}
+            {% for error in form.non_field_errors %}
+               <p class="alart alart-danger my-3">{{error}}</p>
+            {% endfor %}
+         {% endif %}
+   </form>
+  </div>
+ </div>
+</div>
+{% endblock main-content %}

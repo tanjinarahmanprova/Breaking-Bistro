@@ -1,0 +1,44 @@
+{% extends 'app/base.html' %}
+{% load static %}
+{% block main-content %}
+<div class="container">
+ <div class="row mt-5">
+  <div class="col-sm-6">
+    <h4 class="text-white">Order Summary</h4>
+    <hr>
+    {% for item in cart_item %}
+      <div class="card mb-2 bg-dark text-white">
+        <div class="card-body">
+          <h6>Item : {{item.product.title}}</h6>
+          <h6>Quantity: {{item.quantity}}</h6>
+          <h6>Price: {{item.total_cost}} TK</h6>
+        </div>
+      </div>
+      {% endfor %}
+      <h6 class="fw-bold text-white">Total Amount : {{totalamount}} TK</h6>
+    </div>
+  <div class="col-sm-4 offset-sm-1">
+    <h4 class="text-white">Select Address</h4>
+    <hr>
+    <form action="/orderdone">
+    {% for ad in add %}
+      <div class="card bg-dark text-white">
+        <div class="card-body">
+        <h6>{{ad.name}}</h6>
+        <h6>{{ad.address}}</h6>
+        <h6>{{ad.mobileno}}</h6>
+        </div>
+      </div>
+        <div class="form-check mt-2 mb-5">
+          <input class="form-check-input bg-light btn-warning" type="radio" name="custid" id="custadd{{forloop.counter}}" value="{{ad.id}}">
+          <label class="form-check-label text-white fw-bold" for="custadd{{forloop.counter}}">Address: {{forloop.counter}} </label>
+        </div>
+      {% endfor %}
+        <div class="text-end">
+          <button type="submit" class="btn btn-warning mt-3 px-5 ">Continue</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+{% endblock main-content %}

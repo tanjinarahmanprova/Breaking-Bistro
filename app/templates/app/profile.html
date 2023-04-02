@@ -1,0 +1,31 @@
+{% extends 'app/base.html' %}
+{% load static %}
+{% block title %}Profile{% endblock title %}
+{% block main-content %}
+<div class="container my-5">
+ <div class="row">
+  <h3 class="text-white">Welcome <span class="text-capitalize"> {{request.user}} </span>!</h3>
+  <div class="col-sm-2 border-end">
+   <ul class="list-unstyled">
+    <li class="d-grid"><a href="{% url 'address' %}" class="btn btn-warning">Profile</a></li><br>
+    <li class="d-grid"><a href="{% url 'profile' %}" class="btn {{active}} btn-light">Add New Address</a></li>
+   </ul>
+  </div>
+    <div class="col-sm-8 offset-sm-1">
+      <h3 class="text-white">Update profile</h3>
+      <hr>
+      <form action="" method="post" novalidate class="shadow p-5 text-white">
+        {% csrf_token %}
+          {% for fm in form %}
+            <div class="form-group col-lg-6 mb-3">
+              {{fm.label_tag}} {{fm}} <small class="text-danger">{{fm.errors | striptags}}</small>
+            </div>
+          {% endfor %}
+          <div>
+            <button type= "submit" class="btn btn-warning mb-3">Submit</button>
+          </div>
+      </form>
+    </div>
+ </div>
+</div>
+{% endblock main-content %}
